@@ -33,7 +33,7 @@ function getAverage(timelineData){
 	return 1.0*sum/timelineData.length;
 }
 
-function getPeakDates(timelineData, peakParam=2.5){
+function getPeakDates(timelineData, peakParam=3){
 	var avg = getAverage(timelineData);
 	var std = getSTD(timelineData);
 	// console.log("avg:"+avg.toString());

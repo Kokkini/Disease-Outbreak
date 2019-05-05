@@ -77,10 +77,15 @@ function displayWeather(){
 //Gets and displays weather data on the weather page
 function getWeather(){
 	//Create URL to getWeather page
-	var URL = "http://localhost:8080/getWeather";	
-	// var simple = `{"area": "US-PA,US-NY", "disease": "measles,malaria"}`;
-	var simple = JSON.stringify({"area": "US-PA,US-NY", "disease": "measles,malaria"});
-	// var jsonData = {'area': {'US-PA':'','US-NY':''}, 'disease': {'measles':'','malaria':''}};
+	var URL = "http://localhost:8080/getWeather";
+	console.log('fire style');
+	var simple = {area: "", disease: ""};
+	var areaCode = $("#area").get(0).value;
+	var diseasesCode = $("#diseases").get(0).value;
+	simple.area = areaCode;
+	simple.disease = diseasesCode;
+	console.log(simple);
+	simple = JSON.stringify(simple);
 	//Construct AJAX request to localhost
 	$.ajax({
 		type: "POST",
@@ -89,26 +94,10 @@ function getWeather(){
 		dataType: "text",
 		success: function(msg){
 
-			console.log(msg);
+			document.getElementById("json").innerHTML = msg;
 
 			msgJSON = JSON.parse(msg);
-			for (var area in msgJSON){
-				console.log(area);
-			}
-
-			// msg = JSON.stringify(msgJSON);
-
-
-			// // $("#out_weather").html(msg);
-			// console.log(msg.default.timelineData[0].value);
-			// // var average = getAverage(msg.default.timelineData);
-			// var peakDates = getPeakDates(msg.default.timelineData);
-
-			// for (i=0; i<peakDates.length; i++){
-			// 	console.log(peakDates[i]);
-			// }
-
-			// console.log("peak dates length:" + peakDates.length.toString());
+			document.getElementById("json").innerHTML = JSON.stringify(msgJSON, undefined, 2);
 
 			// var textContent = fetch('email_area_disease.txt');//.then(response => response.text()).then(text => console.log(text))
 
@@ -133,13 +122,8 @@ function getWeather(){
 
 			// console.log(content);
 
-
-			// $("#json").html(msg);
-			document.getElementById("json").innerHTML = JSON.stringify(msgJSON, undefined, 2);
-
 			// var html_str = JSON.stringify(msg);
 			// $("#out_weather").html(html_str);
-
 		},
 		error: function(xhr, ajaxOptions, thrownError){
 			alert("Error contacting server!");
@@ -182,8 +166,4 @@ function getSTD(timelineData){
 	std /= timelineData.length;
 	std = Math.pow(std, 0.5);
 	return std;
-}
-
-function register(){
-	document.getElementById("out_weather").innerHTML = "You have registered successfully!";
 }
