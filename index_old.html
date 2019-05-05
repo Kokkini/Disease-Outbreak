@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lab 4</title>
+</head>
+<body>
+<style>
+.banner {
+	background-color: #07294d;
+	display: inline-flex;
+	position: fixed;
+	top: 0;
+	height: 120px;
+	width: 100%;
+	z-index: 10;
+}
+.banner_img {
+	float: left;
+	padding: 10px;
+}
+.banner_text {
+	color: #fff;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 45px;
+	margin: auto 10px;
+	text-transform: uppercase;
+}
+body {
+	margin: 0;
+}
+.content {
+	padding: 20px;
+	position: absolute;
+	top: 120px;
+	bottom: 0;
+	left: 20%;
+}
+.content img {
+	float: left;
+}
+.sidenav {
+	background-color: #FFC600;
+	position: fixed;
+	text-align: center;
+	top: 120px;
+	height: 100%;
+	width: 20%;
+}
+.nav_link {
+	display: block;
+	background: #07294d;
+    color: #fff;
+	font: bold 16px/2 arial,helvetica,sans-serif;
+	text-transform: uppercase;
+}
+</style>
+<script type="text/JavaScript" src="jquery-3.1.1.min.js"></script>
+<script type="text/JavaScript" src="client.js"></script>
+<!-- Display a banner fixed to top of page -->
+<div class="banner">
+	<img src="banner.png" class="banner_img">
+	<div class="banner_text">
+		<p style="margin: 0">CS 275 - Lab 4</p>
+		<p style="margin: 0">Winter 2016-17</p>
+	</div>
+</div>
+<!-- Display left-side navigation links-->
+<div class="sidenav">
+	<nav style="padding: 15px">
+		<a class="nav_link" href=".">Home</a>
+		<br>
+		<a class="nav_link" onclick="displayCalc()" href="#">Calculation</a>
+		<br>
+		<a class="nav_link" onclick="displayWeather()" href="#">Weather</a>
+	</nav>
+</div>
+<!-- Dynamic content area -->
+<div class="content" id="content">
+	<h2 style="margin-top: 0">Welcome to Lab 4 of CS 275!</h2>
+	<p>The purpose of this lab is three-fold:</p>
+	<ol>
+		<li>Allowing for multiple pages with a mixture of static and dynamically generated content.</li>
+		<li>Beginning to apply good software design principles by segmenting logic into their own modules.</li>
+		<li>Getting experience from playing with Node.js emitters.</li>
+	</ol>
+	<p>This lab integrates content from both labs 2 and 3, which involved the following:</p>
+	<ul>
+		<li>Lab 2 -  Learn how to utilize jQuery and Ajax to develop a web page to invoke the Weather Wunderground web service and parse its JSON response</li>
+		<li>Lab 3 - Two-fold:
+			<ul>
+			<li>Set up and test a server side environment</li>
+			<li>Get acquainted with Node.js basics, including interactions between client and server along with the development of a simple dynamic web service</li>
+			</ul>
+		</li>
+	</ul>
+	<h2>Using This Page</h2>
+	<p>The main page, which is the file "index.html," should not be opened directly in a browser. Instead, open a command-line, such as Command Prompt, navigate to the directory containing server.js, and run the command "node server.js" without quotes. Next, open a browser and type the URL "localhost:8080" as the server is set to listen to port 8080. The server will then display this page and you can begin using the links in the navigation area to the left to try out the calculation and weather services. Click "HOME" to return here anytime.</p>
+	<h3>Notes</h3>
+	<p>This page is set up so that the banner and navigation areas are fixed to the top and left, respectively. It might not be noticeable on larger monitors.</p>
+	<p>Webpage By: Joseph Haggerty</p>
+	<p>Drexel University, 3141 Chestnut Street, Philadelphia, PA 19104, 215.895.2000</p>
+</div>
+</body>
+</html>
